@@ -5,7 +5,7 @@
  *
  * This product includes software developed at Janssen Research & Development, LLC.
  *
- * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License 
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License
  * as published by the Free Software  * Foundation, either version 3 of the License, or (at your option) any later version, along with the following terms:
  * 1.	You may convey a work based on this program in accordance with section 5, provided that you retain the above notices.
  * 2.	You may convey verbatim copies of this program code as you receive it, in any medium, provided that you retain the above notices.
@@ -16,38 +16,32 @@
  *
  *
  ******************************************************************/
-
-
 package org.transmart.biomart
 
 class BioAssayDataset {
-    Long id
-    String name
-    String description
-    String criteria
-    Date createDate
-    BioAssay bioAssay
-    Experiment experiment
+	BioAssay bioAssay
+	Date createDate
+	String criteria
+	String description
+	Experiment experiment
+	String name
 
-    static mapping = {
-        table 'BIO_ASSAY_DATASET'
-        version false
-        cache usage: 'read-only'
-        id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID']
-        columns {
-            id column: 'BIO_ASSAY_DATASET_ID'
-            name column: 'DATASET_NAME'
-            description column: 'DATASET_DESCRIPTION'
-            criteria column: 'DATASET_CRITERIA'
-            createDate column: 'CREATE_DATE'
-            bioAssay column: 'BIO_ASSAY_ID'
-            experiment column: 'BIO_EXPERIMENT_ID'
-        }
-    }
-    static constraints = {
-        name(nullable: true, maxSize: 800)
-        description(nullable: true, maxSize: 2000)
-        criteria(nullable: true, maxSize: 2000)
-        createDate(nullable: true)
-    }
+	static mapping = {
+		table 'BIO_ASSAY_DATASET'
+		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_ASSAY_DATASET_ID'
+		version false
+		cache usage: 'read-only'
+
+		criteria column: 'DATASET_CRITERIA'
+		description column: 'DATASET_DESCRIPTION'
+		experiment column: 'BIO_EXPERIMENT_ID'
+		name column: 'DATASET_NAME'
+	}
+
+	static constraints = {
+		createDate nullable: true
+		criteria nullable: true, maxSize: 2000
+		description nullable: true, maxSize: 2000
+		name nullable: true, maxSize: 800
+	}
 }

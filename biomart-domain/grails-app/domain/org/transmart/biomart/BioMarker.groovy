@@ -5,7 +5,7 @@
  *
  * This product includes software developed at Janssen Research & Development, LLC.
  *
- * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License 
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License
  * as published by the Free Software  * Foundation, either version 3 of the License, or (at your option) any later version, along with the following terms:
  * 1.	You may convey a work based on this program in accordance with section 5, provided that you retain the above notices.
  * 2.	You may convey verbatim copies of this program code as you receive it, in any medium, provided that you retain the above notices.
@@ -16,101 +16,77 @@
  *
  *
  ******************************************************************/
-
-/**
- * $Id: BioMarker.groovy 9178 2011-08-24 13:50:06Z mmcduffie $
- * @author $Author: mmcduffie $
- * @version $Revision: 9178 $
- */
-
 package org.transmart.biomart
 
 import com.recomdata.util.IExcelProfile
 
 class BioMarker implements IExcelProfile {
-    Long id
-    String name
-    String description
-    String organism
-    String primarySourceCode
-    String primaryExternalId
-    String bioMarkerType
-    static hasMany = [correlations: BioDataCorrelation,
-            associatedCorrels: BioDataCorrelation,
-            assayAnalysisData: BioAssayAnalysisData,
-            literatures: Literature,
-            assayDataStats: BioAssayDataStatistics]
+	String bioMarkerType
+	String description
+	String name
+	String organism
+	String primaryExternalId
+	String primarySourceCode
 
-    String uniqueId
-    static transients = ['uniqueId']
-    
-    def isGene() {
-        return "GENE".equalsIgnoreCase(bioMarkerType)
-    }
+	String uniqueId
 
-    def isPathway() {
-        return "PATHWAY".equalsIgnoreCase(bioMarkerType)
-    }
+	static transients = ['gene', 'pathway', 'uniqueId', 'values']
 
-    static mapping = {
-        table 'BIO_MARKER'
-        version false
+	static hasMany = [assayAnalysisData: BioAssayAnalysisData,
+	                  assayDataStats   : BioAssayDataStatistics,
+	                  associatedCorrels: BioDataCorrelation,
+	                  correlations     : BioDataCorrelation,
+	                  literatures      : Literature]
 
-//	 id generator:'sequence', params:[sequence:'SEQ_BIO_DATA_ID']
-        columns {
-            id column: 'BIO_MARKER_ID'
-            name column: 'BIO_MARKER_NAME'
-            description column: 'BIO_MARKER_DESCRIPTION'
-            organism column: 'ORGANISM'
-            primarySourceCode column: 'PRIMARY_SOURCE_CODE'
-            primaryExternalId column: 'PRIMARY_EXTERNAL_ID'
-            bioMarkerType column: 'BIO_MARKER_TYPE'
-            correlations joinTable: [name: 'BIO_DATA_CORRELATION', key: 'BIO_DATA_ID', column: 'BIO_DATA_CORREL_ID']
-            associatedCorrels joinTable: [name: 'BIO_DATA_CORRELATION', key: 'ASSO_BIO_DATA_ID', column: 'BIO_DATA_CORREL_ID']
-            assayAnalysisData joinTable: [name: 'BIO_DATA_OMIC_MARKER', key: 'BIO_MARKER_ID']
-            literatures joinTable: [name: 'BIO_DATA_OMIC_MARKER', key: 'BIO_MARKER_ID']
-            assayDataStats joinTable: [name: 'BIO_DATA_OMIC_MARKER', key: 'BIO_MARKER_ID']
-        }
-    }
-    static constraints = {
-        primaryExternalId(nullable: true, maxSize: 400)
-        bioMarkerType(maxSize: 400)
-        name(nullable: true, maxSize: 400)
-        description(nullable: true, maxSize: 2000)
-        organism(nullable: true, maxSize: 400)
-        primarySourceCode(nullable: true, maxSize: 400)
-    }
+	static mapping = {
+		table 'BIO_MARKER'
+		id column: 'BIO_MARKER_ID'
+		version false
 
-    /**
-     * Get values to Export to Excel
-     */
-    public List getValues() {
-        return [name, description, organism]
-    }
-    
-    String getUniqueId() {
-        if (uniqueId == null) {
-            if (id) {
-                BioData data = BioData.get(id);
-                if (data != null) {
-                    uniqueId = data.uniqueId
-                    return data.uniqueId;
-                }
-                return null;
-            } else {
-                return null;
-            }
-        } else {
-            return uniqueId;
-        }
-    }
-    
-    static BioMarker findByUniqueId(String uniqueId) {
-        BioMarker cc;
-        BioData bd = BioData.findByUniqueId(uniqueId);
-        if (bd != null) {
-            cc = BioMarker.get(bd.id);
-        }
-        return cc;
-    }
+		assayAnalysisData joinTable: [name: 'BIO_DATA_OMIC_MARKER', key: 'BIO_MARKER_ID']
+		assayDataStats joinTable: [name: 'BIO_DATA_OMIC_MARKER', key: 'BIO_MARKER_ID']
+		associatedCorrels joinTable: [name: 'BIO_DATA_CORRELATION', key: 'ASSO_BIO_DATA_ID', column: 'BIO_DATA_CORREL_ID']
+		correlations joinTable: [name: 'BIO_DATA_CORRELATION', key: 'BIO_DATA_ID', column: 'BIO_DATA_CORREL_ID']
+		description column: 'BIO_MARKER_DESCRIPTION'
+		literatures joinTable: [name: 'BIO_DATA_OMIC_MARKER', key: 'BIO_MARKER_ID']
+		name column: 'BIO_MARKER_NAME'
+	}
+
+	static constraints = {
+		bioMarkerType maxSize: 400
+		description nullable: true, maxSize: 2000
+		name nullable: true, maxSize: 400
+		organism nullable: true, maxSize: 400
+		primaryExternalId nullable: true, maxSize: 400
+		primarySourceCode nullable: true, maxSize: 400
+	}
+
+	static BioMarker findByUniqueId(String uniqueId) {
+		executeQuery('from BioMarker where id=(select id from BioData where uniqueId=:uniqueId)',
+				[uniqueId: uniqueId])[0]
+	}
+
+	boolean isGene() {
+		'GENE'.equalsIgnoreCase bioMarkerType
+	}
+
+	boolean isPathway() {
+		'PATHWAY'.equalsIgnoreCase bioMarkerType
+	}
+
+	List getValues() {
+		[name, description, organism]
+	}
+
+	String getUniqueId() {
+		if (uniqueId) {
+			return uniqueId
+		}
+
+		String bioDataUid = BioData.where { id == this.id }.uniqueId.get()
+		if (bioDataUid) {
+			uniqueId = bioDataUid
+			return uniqueId
+		}
+	}
 }

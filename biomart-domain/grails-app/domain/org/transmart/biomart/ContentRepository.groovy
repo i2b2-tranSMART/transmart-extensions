@@ -5,7 +5,7 @@
  *
  * This product includes software developed at Janssen Research & Development, LLC.
  *
- * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License 
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License
  * as published by the Free Software  * Foundation, either version 3 of the License, or (at your option) any later version, along with the following terms:
  * 1.	You may convey a work based on this program in accordance with section 5, provided that you retain the above notices.
  * 2.	You may convey verbatim copies of this program code as you receive it, in any medium, provided that you retain the above notices.
@@ -16,34 +16,27 @@
  *
  *
  ******************************************************************/
-
-
 package org.transmart.biomart
 
 class ContentRepository {
-    Long id
-    String location
-    String activeYN
-    String repositoryType
-    String locationType
-    static mapping = {
-        table 'BIO_CONTENT_REPOSITORY'
-        version false
-        cache usage: 'read-only'
-        id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID']
-        columns {
-            id column: 'BIO_CONTENT_REPO_ID'
-            location column: 'LOCATION'
-            activeYN column: 'ACTIVE_Y_N'
-            repositoryType column: 'REPOSITORY_TYPE'
-            locationType column: 'LOCATION_TYPE'
-        }
-    }
+	String activeYN
+	String location
+	String locationType
+	String repositoryType
 
-    static constraints = {
-        location(nullable: true, maxSize: 1020)
-        activeYN(nullable: true, maxSize: 1)
-        repositoryType(maxSize: 400)
-        locationType(nullable: true, maxSize: 400)
-    }
+	static mapping = {
+		table 'BIO_CONTENT_REPOSITORY'
+		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_CONTENT_REPO_ID'
+		version false
+		cache usage: 'read-only'
+
+		activeYN column: 'ACTIVE_Y_N'
+	}
+
+	static constraints = {
+		activeYN nullable: true, maxSize: 1
+		location nullable: true, maxSize: 1020
+		locationType nullable: true, maxSize: 400
+		repositoryType maxSize: 400
+	}
 }

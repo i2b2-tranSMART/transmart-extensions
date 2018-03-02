@@ -16,29 +16,20 @@
  *
  *
  ******************************************************************/
-
-
 package org.transmart.biomart
 
 class ClinicalTrialTimePoint {
-    Long id
-    String timePoint
-    String timePointCode
-    Date startDate
-    Date endDate
-    ClinicalTrial clinicalTrial
-    static mapping = {
-        table 'BIO_CLINC_TRIAL_TIME_PT'
-        version false
-        id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID']
-        columns {
-            id column: 'BIO_CLINC_TRIAL_TM_PT_ID'
-            timePoint column: 'TIME_POINT'
-            timePointCode column: 'TIME_POINT_CODE'
-            startDate column: 'START_DATE'
-            endDate column: 'END_DATE'
-            clinicalTrial column: 'BIO_EXPERIMENT_ID'
-        }
-    }
+	ClinicalTrial clinicalTrial
+	Date endDate
+	Date startDate
+	String timePoint
+	String timePointCode
 
+	static mapping = {
+		table 'BIO_CLINC_TRIAL_TIME_PT'
+		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_CLINC_TRIAL_TM_PT_ID'
+		version false
+
+		clinicalTrial column: 'BIO_EXPERIMENT_ID'
+	}
 }

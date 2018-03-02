@@ -5,7 +5,7 @@
  *
  * This product includes software developed at Janssen Research & Development, LLC.
  *
- * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License 
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License
  * as published by the Free Software  * Foundation, either version 3 of the License, or (at your option) any later version, along with the following terms:
  * 1.	You may convey a work based on this program in accordance with section 5, provided that you retain the above notices.
  * 2.	You may convey verbatim copies of this program code as you receive it, in any medium, provided that you retain the above notices.
@@ -16,38 +16,30 @@
  *
  *
  ******************************************************************/
-
-
 package org.transmart.biomart
 
 class BioSubject {
-    Long id
-    Long siteSubjectId
-    String source
-    String sourceCode
-    String status
-    String organism
-    String type
-    static mapping = {
-        table 'BIO_SUBJECT'
-        version false
-        id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID']
-        columns {
-            id column: 'BIO_SUBJECT_ID'
-            siteSubjectId column: 'SITE_SUBJECT_ID'
-            source column: 'SOURCE'
-            sourceCode column: 'SOURCE_CODE'
-            status column: 'STATUS'
-            organism column: 'ORGANISM'
-            type column: 'BIO_SUBJECT_TYPE'
-        }
-    }
-    static constraints = {
-        siteSubjectId(nullable: true)
-        source(nullable: true, maxSize: 400)
-        sourceCode(nullable: true, maxSize: 400)
-        status(nullable: true, maxSize: 400)
-        organism(nullable: true, maxSize: 400)
-        type(maxSize: 400)
-    }
+	String organism
+	Long siteSubjectId
+	String source
+	String sourceCode
+	String status
+	String type
+
+	static mapping = {
+		table 'BIO_SUBJECT'
+		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_SUBJECT_ID'
+		version false
+
+		type column: 'BIO_SUBJECT_TYPE'
+	}
+
+	static constraints = {
+		organism nullable: true, maxSize: 400
+		siteSubjectId nullable: true
+		source nullable: true, maxSize: 400
+		sourceCode nullable: true, maxSize: 400
+		status nullable: true, maxSize: 400
+		type maxSize: 400
+	}
 }

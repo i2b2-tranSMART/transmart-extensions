@@ -5,7 +5,7 @@
  *
  * This product includes software developed at Janssen Research & Development, LLC.
  *
- * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License 
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License
  * as published by the Free Software  * Foundation, either version 3 of the License, or (at your option) any later version, along with the following terms:
  * 1.	You may convey a work based on this program in accordance with section 5, provided that you retain the above notices.
  * 2.	You may convey verbatim copies of this program code as you receive it, in any medium, provided that you retain the above notices.
@@ -16,72 +16,53 @@
  *
  *
  ******************************************************************/
-
-
 package org.transmart.biomart
 
 class Compound {
-    Long id
-    String cntoNumber
-    String number
-    String casRegistry
-    String codeName
-    String genericName
-    String brandName
-    String chemicalName
-    String mechanism
-    String productCategory
-    String description
-    String sourceCode
+	String brandName
+	String casRegistry
+	String chemicalName
+	String cntoNumber
+	String codeName
+	String description
+	String genericName
+	String mechanism
+	String number
+	String productCategory
+	String sourceCode
 
-    static hasMany = [experiments: Experiment, literatures: Literature]
+	static transients = ['name']
 
-    def getName() {
-        if (genericName != null)
-            return genericName;
-        if (brandName != null)
-            return brandName;
-        if (number != null)
-            return number;
-        if (cntoNumber != null)
-            return cntoNumber;
-    }
+	static hasMany = [experiments: Experiment,
+	                  literatures: Literature]
 
-    static mapping = {
-        table 'BIO_COMPOUND'
-        version false
-        cache usage: 'read-only'
-        id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID']
-        columns {
-            id column: 'BIO_COMPOUND_ID'
-            cntoNumber column: 'CNTO_NUMBER'
-            number column: 'JNJ_NUMBER'
-            casRegistry column: 'CAS_REGISTRY'
-            codeName column: 'CODE_NAME'
-            genericName column: 'GENERIC_NAME'
-            brandName column: 'BRAND_NAME'
-            chemicalName column: 'CHEMICAL_NAME'
-            mechanism column: 'MECHANISM'
-            productCategory column: 'PRODUCT_CATEGORY'
-            description column: 'DESCRIPTION'
-            sourceCode column: 'SOURCE_CD'
-            experiments joinTable: [name: 'BIO_DATA_COMPOUND', key: 'BIO_COMPOUND_ID']
-            literatures joinTable: [name: 'BIO_DATA_COMPOUND', key: 'BIO_COMPOUND_ID']
-        }
-    }
+	static mapping = {
+		table 'BIO_COMPOUND'
+		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_COMPOUND_ID'
+		version false
+		cache usage: 'read-only'
 
-    static constraints = {
-        cntoNumber(nullable: true, maxSize: 400)
-        number(nullable: true, maxSize: 400)
-        casRegistry(nullable: true, maxSize: 800)
-        codeName(nullable: true, maxSize: 400)
-        genericName(nullable: true, maxSize: 400)
-        brandName(nullable: true, maxSize: 400)
-        chemicalName(nullable: true, maxSize: 800)
-        mechanism(nullable: true, maxSize: 800)
-        productCategory(nullable: true, maxSize: 400)
-        description(nullable: true, maxSize: 2000)
-        sourceCode(nullable: true, maxSize: 100)
-    }
+		experiments joinTable: [name: 'BIO_DATA_COMPOUND', key: 'BIO_COMPOUND_ID']
+		literatures joinTable: [name: 'BIO_DATA_COMPOUND', key: 'BIO_COMPOUND_ID']
+		number column: 'JNJ_NUMBER'
+		sourceCode column: 'SOURCE_CD'
+	}
 
+	static constraints = {
+		brandName nullable: true, maxSize: 400
+		casRegistry nullable: true, maxSize: 800
+		chemicalName nullable: true, maxSize: 800
+		cntoNumber nullable: true, maxSize: 400
+		codeName nullable: true, maxSize: 400
+		description nullable: true, maxSize: 2000
+		genericName nullable: true, maxSize: 400
+		mechanism nullable: true, maxSize: 800
+		number nullable: true, maxSize: 400
+		productCategory nullable: true, maxSize: 400
+		sourceCode nullable: true, maxSize: 100
+	}
+
+	String getName() {
+		genericName ?: brandName ?: number ?: cntoNumber
+	}
 }

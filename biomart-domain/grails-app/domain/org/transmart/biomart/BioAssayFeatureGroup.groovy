@@ -5,7 +5,7 @@
  *
  * This product includes software developed at Janssen Research & Development, LLC.
  *
- * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License 
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License
  * as published by the Free Software  * Foundation, either version 3 of the License, or (at your option) any later version, along with the following terms:
  * 1.	You may convey a work based on this program in accordance with section 5, provided that you retain the above notices.
  * 2.	You may convey verbatim copies of this program code as you receive it, in any medium, provided that you retain the above notices.
@@ -16,31 +16,24 @@
  *
  *
  ******************************************************************/
-
-
 package org.transmart.biomart
 
 class BioAssayFeatureGroup {
-    Long id
-    String name
-    String type
-    static hasMany = [markers: BioMarker]
-    static belongsTo = [BioMarker]
+	String name
+	String type
 
+	static hasMany = [markers: BioMarker]
 
-    static mapping = {
-        table 'BIO_ASSAY_FEATURE_GROUP'
-        version false
-        cache usage: 'read-only'
-        id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID']
-        columns {
-            id column: 'BIO_ASSAY_FEATURE_GROUP_ID'
-            name column: 'FEATURE_GROUP_NAME'
-            type column: 'FEATURE_GROUP_TYPE'
-            markers joinTable: [name: 'BIO_ASSAY_DATA_ANNOTATION', key: 'BIO_ASSAY_FEATURE_GROUP_ID']
-        }
-    }
+	static belongsTo = [BioMarker]
 
-    static constraints = {
-    }
+	static mapping = {
+		table 'BIO_ASSAY_FEATURE_GROUP'
+		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_ASSAY_FEATURE_GROUP_ID'
+		version false
+		cache usage: 'read-only'
+
+		markers joinTable: [name: 'BIO_ASSAY_DATA_ANNOTATION', key: 'BIO_ASSAY_FEATURE_GROUP_ID'] // BioAssayDataAnnotation
+		name column: 'FEATURE_GROUP_NAME'
+		type column: 'FEATURE_GROUP_TYPE'
+	}
 }

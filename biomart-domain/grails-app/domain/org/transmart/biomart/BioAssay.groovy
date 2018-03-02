@@ -5,7 +5,7 @@
  *
  * This product includes software developed at Janssen Research & Development, LLC.
  *
- * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License 
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License
  * as published by the Free Software  * Foundation, either version 3 of the License, or (at your option) any later version, along with the following terms:
  * 1.	You may convey a work based on this program in accordance with section 5, provided that you retain the above notices.
  * 2.	You may convey verbatim copies of this program code as you receive it, in any medium, provided that you retain the above notices.
@@ -16,52 +16,38 @@
  *
  *
  ******************************************************************/
-
-
 package org.transmart.biomart
 
 class BioAssay {
 
-    Long id
-    String study
-    String protocol
-    String description
-    String sampleType
-    Experiment experiment
-    Date testDate
-    Date sampleReceiveDate
-    String requestor
-    Long assayPlatformId
+	Long assayPlatformId
+	String description
+	Experiment experiment
+	String protocol
+	String requestor
+	Date sampleReceiveDate
+	String sampleType
+	String study
+	Date testDate
+	String type
 
-    String type
-    static mapping = {
-        table 'BIO_ASSAY'
-        version false
-        id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID']
-        columns {
-            id column: 'BIO_ASSAY_ID'
-            study column: 'STUDY'
-            protocol column: 'PROTOCOL'
-            description column: 'DESCRIPTION'
-            sampleType column: 'SAMPLE_TYPE'
-            experiment column: 'EXPERIMENT_ID'
-            testDate column: 'TEST_DATE'
-            sampleReceiveDate column: 'SAMPLE_RECEIVE_DATE'
-            requestor column: 'REQUESTOR'
-            type column: 'BIO_ASSAY_TYPE'
-            assayPlatformId: 'BIO_ASY_PLATFORM_ID'
-        }
-    }
+	static mapping = {
+		table 'BIO_ASSAY'
+		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_ASSAY_ID'
+		version false
 
-    static constraints = {
-        study(nullable: true, maxSize: 400)
-        protocol(nullable: true, maxSize: 400)
-        description(nullable: true, maxSize: 4000)
-        sampleType(nullable: true, maxSize: 400)
-        testDate(nullable: true)
-        sampleReceiveDate(nullable: true)
-        requestor(nullable: true, maxSize: 400)
-        type(maxSize: 400)
-    }
+		assayPlatformId: 'BIO_ASY_PLATFORM_ID' // TODO this is invalid and is ignored
+		type column: 'BIO_ASSAY_TYPE'
+	}
 
+	static constraints = {
+		description nullable: true, maxSize: 4000
+		protocol nullable: true, maxSize: 400
+		requestor nullable: true, maxSize: 400
+		sampleReceiveDate nullable: true
+		sampleType nullable: true, maxSize: 400
+		study nullable: true, maxSize: 400
+		testDate nullable: true
+		type maxSize: 400
+	}
 }

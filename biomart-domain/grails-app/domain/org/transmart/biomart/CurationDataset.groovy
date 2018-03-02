@@ -5,7 +5,7 @@
  *
  * This product includes software developed at Janssen Research & Development, LLC.
  *
- * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License 
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License
  * as published by the Free Software  * Foundation, either version 3 of the License, or (at your option) any later version, along with the following terms:
  * 1.	You may convey a work based on this program in accordance with section 5, provided that you retain the above notices.
  * 2.	You may convey verbatim copies of this program code as you receive it, in any medium, provided that you retain the above notices.
@@ -16,32 +16,26 @@
  *
  *
  ******************************************************************/
-
-
 package org.transmart.biomart
 
 class CurationDataset {
-    String curationType
-    Date createDate
-    Long creator
-    Long id
-    Long bioAnalysisPlatformId
-    static mapping = {
-        table 'BIO_CURATION_DATASET'
-        version false
-        id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID']
-        columns {
-            curationType column: 'BIO_CURATION_TYPE'
-            createDate column: 'CREATE_DATE'
-            creator column: 'CREATOR'
-            id column: 'BIO_CURATION_DATASET_ID'
-            bioAnalysisPlatformId column: 'BIO_ASY_ANALYSIS_PLATFORM_ID'
-        }
-    }
-    static constraints = {
-        curationType(maxSize: 400)
-        createDate(nullable: true)
-        creator(nullable: true)
+	Long bioAnalysisPlatformId
+	Date createDate
+	Long creator
+	String curationType
 
-    }
+	static mapping = {
+		table 'BIO_CURATION_DATASET'
+		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_CURATION_DATASET_ID'
+		version false
+
+		bioAnalysisPlatformId column: 'BIO_ASY_ANALYSIS_PLATFORM_ID'
+		curationType column: 'BIO_CURATION_TYPE'
+	}
+
+	static constraints = {
+		createDate nullable: true
+		creator nullable: true
+		curationType maxSize: 400
+	}
 }

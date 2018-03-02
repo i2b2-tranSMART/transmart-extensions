@@ -2,30 +2,19 @@ package org.transmart.biomart
 
 class AdHocProperty {
 
-	Long id
-	Long objectId
 	String key
+	Long objectId
 	String value
-	
-    static mapping = {
+
+	static mapping = {
 		table 'BIO_AD_HOC_PROPERTY'
+		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'AD_HOC_PROPERTY_ID'
 		version false
-		id generator:'sequence', params:[sequence:'SEQ_BIO_DATA_ID']
-		
-		columns {
-			id column: 'AD_HOC_PROPERTY_ID'
-			objectId column: 'BIO_DATA_ID'
-			key column: 'PROPERTY_KEY'
-			value column: 'PROPERTY_VALUE'
-		}
-    }
-	
-	static constraints = {
-		key (nullable: false)
-		value (nullable: false)
+
+		key column: 'PROPERTY_KEY'
+		objectId column: 'BIO_DATA_ID'
+		value column: 'PROPERTY_VALUE'
 	}
-	
-	String toString() {
-		return value
-	}
+
+	String toString() { value }
 }

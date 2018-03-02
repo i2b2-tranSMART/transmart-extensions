@@ -16,25 +16,20 @@
  *
  *
  ******************************************************************/
-  
-
 package org.transmart.biomart
-class BioSpeciesOrganism {
-		Long id
-		String species
-		String organism
 
- static mapping = {
-	 table 'BIO_SPECIES_ORGANISM'
-	 version false
-	 columns {
-		id column:'ID'
-		species column:'SPECIES'
-		organism column:'ORGANISM'
-		}
+class BioSpeciesOrganism {
+	String organism
+	String species
+
+	static mapping = {
+		table 'BIO_SPECIES_ORGANISM'
+		id column: 'ID'
+		version false
 	}
- static constraints = {
-	species(nullable:true, maxSize:200)
-	organism(nullable:true, maxSize:200)
+
+	static constraints = {
+		organism nullable: true, maxSize: 200
+		species nullable: true, maxSize: 200
 	}
 }

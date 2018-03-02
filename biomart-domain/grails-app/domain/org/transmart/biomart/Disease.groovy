@@ -5,7 +5,7 @@
  *
  * This product includes software developed at Janssen Research & Development, LLC.
  *
- * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License 
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License
  * as published by the Free Software  * Foundation, either version 3 of the License, or (at your option) any later version, along with the following terms:
  * 1.	You may convey a work based on this program in accordance with section 5, provided that you retain the above notices.
  * 2.	You may convey verbatim copies of this program code as you receive it, in any medium, provided that you retain the above notices.
@@ -16,35 +16,29 @@
  *
  *
  ******************************************************************/
-
-
 package org.transmart.biomart
 
 class Disease {
-    Long id
-    String disease
-    String ccsCategory
-    String icd10Code
-    String meshCode
-    String icd9Code
-    String preferredName
-    static hasMany = [experiments: Experiment, literatures: Literature]
-    static mapping = {
-        table 'BIO_DISEASE'
-        version false
-        cache usage: 'read-only'
-        id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID']
-        columns {
-            id column: 'BIO_DISEASE_ID'
-            disease column: 'DISEASE'
-            ccsCategory column: 'CCS_CATEGORY'
-            icd10Code column: 'ICD10_CODE'
-            meshCode column: 'MESH_CODE'
-            icd9Code column: 'ICD9_CODE'
-            preferredName column: 'PREFERED_NAME'
-            experiments joinTable: [name: 'BIO_DATA_DISEASE', key: 'BIO_DISEASE_ID']
-            literatures joinTable: [name: 'BIO_DATA_DISEASE', key: 'BIO_DISEASE_ID']
-        }
-    }
+	String ccsCategory
+	String disease
+	String icd10Code
+	String icd9Code
+	String meshCode
+	String preferredName
 
+	static hasMany = [experiments: Experiment,
+	                  literatures: Literature]
+
+	static mapping = {
+		table 'BIO_DISEASE'
+		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_DISEASE_ID'
+		version false
+		cache usage: 'read-only'
+
+		experiments joinTable: [name: 'BIO_DATA_DISEASE', key: 'BIO_DISEASE_ID']
+		icd10Code column: 'ICD10_CODE'
+		icd9Code column: 'ICD9_CODE'
+		literatures joinTable: [name: 'BIO_DATA_DISEASE', key: 'BIO_DISEASE_ID']
+		preferredName column: 'PREFERED_NAME'
+	}
 }

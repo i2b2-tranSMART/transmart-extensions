@@ -5,7 +5,7 @@
  *
  * This product includes software developed at Janssen Research & Development, LLC.
  *
- * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License 
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License
  * as published by the Free Software  * Foundation, either version 3 of the License, or (at your option) any later version, along with the following terms:
  * 1.	You may convey a work based on this program in accordance with section 5, provided that you retain the above notices.
  * 2.	You may convey verbatim copies of this program code as you receive it, in any medium, provided that you retain the above notices.
@@ -16,30 +16,19 @@
  *
  *
  ******************************************************************/
-
-
 package org.transmart.biomart
 
 class BioAssayDataAnnotation implements Serializable {
+	private static final long serialVersionUID = 1
 
-    BioMarker bioMarker
-    BioAssayFeatureGroup probeset
-    //String dataTable
+	BioMarker bioMarker
+	BioAssayFeatureGroup probeset
 
-    static mapping = {
-        table 'BIO_ASSAY_DATA_ANNOTATION'
-        version false
-        id composite: ['bioMarker', 'probeset']
+	static mapping = {
+		table 'BIO_ASSAY_DATA_ANNOTATION'
+		id composite: ['bioMarker', 'probeset']
+		version false
 
-        columns {
-            bioMarker column: 'BIO_MARKER_ID'
-            probeset column: 'BIO_ASSAY_FEATURE_GROUP_ID'
-            //dataTable column:'DATA_TABLE'
-        }
-    }
-
-    static constraints = {
-        //dataTable(nullable:true)
-    }
-
+		probeset column: 'BIO_ASSAY_FEATURE_GROUP_ID'
+	}
 }

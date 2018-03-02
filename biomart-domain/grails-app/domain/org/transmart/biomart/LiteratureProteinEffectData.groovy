@@ -5,7 +5,7 @@
  *
  * This product includes software developed at Janssen Research & Development, LLC.
  *
- * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License 
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License
  * as published by the Free Software  * Foundation, either version 3 of the License, or (at your option) any later version, along with the following terms:
  * 1.	You may convey a work based on this program in accordance with section 5, provided that you retain the above notices.
  * 2.	You may convey verbatim copies of this program code as you receive it, in any medium, provided that you retain the above notices.
@@ -16,32 +16,17 @@
  *
  *
  ******************************************************************/
-
-/**
- * $Id: LiteratureProteinEffectData.groovy 9178 2011-08-24 13:50:06Z mmcduffie $
- * @author $Author: mmcduffie $
- * @version $Revision: 9178 $
- */
 package org.transmart.biomart
 
 class LiteratureProteinEffectData extends Literature {
-    Long id
-    LiteratureReferenceData reference
-    LiteratureModelData inVivoModel
-    LiteratureModelData inVitroModel
-    String etlId
-    String description
-    static mapping = {
-        table 'BIO_LIT_PE_DATA'
-        version false
-        id column: 'BIO_LIT_PE_DATA_ID'
-        id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID']
-        columns {
-            reference column: 'BIO_LIT_REF_DATA_ID'
-            inVivoModel column: 'IN_VIVO_MODEL_ID'
-            inVitroModel column: 'IN_VITRO_MODEL_ID'
-            etlId column: 'ETL_ID'
-            description column: 'DESCRIPTION'
-        }
-    }
+	String description
+	String etlId
+	LiteratureModelData inVitroModel
+	LiteratureModelData inVivoModel
+
+	static mapping = {
+		table 'BIO_LIT_PE_DATA'
+		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_LIT_PE_DATA_ID'
+		version false
+	}
 }
