@@ -27,8 +27,8 @@ class BioDataCorrelationDescr {
 	String typeName
 
 	static mapping = {
-		table 'BIO_DATA_CORREL_DESCR'
-		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_DATA_CORREL_DESCR_ID'
+		table 'BIOMART.BIO_DATA_CORREL_DESCR'
+		id generator: 'sequence', params: [sequence: 'BIOMART.SEQ_BIO_DATA_ID'], column: 'BIO_DATA_CORREL_DESCR_ID'
 		version false
 	}
 }

@@ -12,8 +12,8 @@ class BioAssayAnalysisDataIdx implements IExcelProfile {
 	static transients = ['values']
 
 	static mapping = {
-		table name: 'BIO_ASY_ANALYSIS_DATA_IDX', schema: 'BIOMART'
-		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_ASY_ANALYSIS_DATA_IDX_ID'
+		table 'BIOMART.BIO_ASY_ANALYSIS_DATA_IDX'
+		id generator: 'sequence', params: [sequence: 'BIOMART.SEQ_BIO_DATA_ID'], column: 'BIO_ASY_ANALYSIS_DATA_IDX_ID'
 		version false
 	}
 

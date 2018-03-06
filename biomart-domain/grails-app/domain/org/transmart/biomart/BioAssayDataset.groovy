@@ -27,8 +27,8 @@ class BioAssayDataset {
 	String name
 
 	static mapping = {
-		table 'BIO_ASSAY_DATASET'
-		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_ASSAY_DATASET_ID'
+		table 'BIOMART.BIO_ASSAY_DATASET'
+		id generator: 'sequence', params: [sequence: 'BIOMART.SEQ_BIO_DATA_ID'], column: 'BIO_ASSAY_DATASET_ID'
 		version false
 		cache usage: 'read-only'
 

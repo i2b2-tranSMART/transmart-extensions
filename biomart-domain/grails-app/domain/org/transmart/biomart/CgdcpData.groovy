@@ -27,8 +27,8 @@ class CgdcpData extends Literature {
 	String negationIndicator
 
 	static mapping = {
-		table 'BIO_CGDCP_DATA'
-		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID']
+		table 'BIOMART.BIO_CGDCP_DATA'
+		id generator: 'sequence', params: [sequence: 'BIOMART.SEQ_BIO_DATA_ID']
 		version false
 	}
 

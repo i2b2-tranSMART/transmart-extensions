@@ -26,8 +26,8 @@ class BioDataExternalCode {
 	String codeType
 
 	static mapping = {
-		table 'BIO_DATA_EXT_CODE'
-		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_DATA_EXT_CODE_ID'
+		table 'BIOMART.BIO_DATA_EXT_CODE'
+		id generator: 'sequence', params: [sequence: 'BIOMART.SEQ_BIO_DATA_ID'], column: 'BIO_DATA_EXT_CODE_ID'
 		version false
 	}
 

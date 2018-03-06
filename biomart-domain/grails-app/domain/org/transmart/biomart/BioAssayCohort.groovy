@@ -13,8 +13,8 @@ class BioAssayCohort {
 	String treatment
 
 	static mapping = {
-		table 'BIO_ASSAY_COHORT'
-		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_ASSAY_COHORT_ID'
+		table 'BIOMART.BIO_ASSAY_COHORT'
+		id generator: 'sequence', params: [sequence: 'BIOMART.SEQ_BIO_DATA_ID'], column: 'BIO_ASSAY_COHORT_ID'
 		version false
 		cache usage: 'read-only'
 	}

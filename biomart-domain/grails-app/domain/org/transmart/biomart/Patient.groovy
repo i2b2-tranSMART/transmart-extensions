@@ -34,8 +34,8 @@ class Patient {
 	String raceCode
 
 	static mapping = {
-		table 'BIO_PATIENT'
-		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_PATIENT_ID'
+		table 'BIOMART.BIO_PATIENT'
+		id generator: 'sequence', params: [sequence: 'BIOMART.SEQ_BIO_DATA_ID'], column: 'BIO_PATIENT_ID'
 		version false
 
 		bioClinicalTrialPGroupId column: 'BIO_CLINICAL_TRIAL_P_GROUP_ID'

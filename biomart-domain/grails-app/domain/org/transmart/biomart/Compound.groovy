@@ -37,13 +37,13 @@ class Compound {
 	                  literatures: Literature]
 
 	static mapping = {
-		table 'BIO_COMPOUND'
-		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_COMPOUND_ID'
+		table 'BIOMART.BIO_COMPOUND'
+		id generator: 'sequence', params: [sequence: 'BIOMART.SEQ_BIO_DATA_ID'], column: 'BIO_COMPOUND_ID'
 		version false
 		cache usage: 'read-only'
 
-		experiments joinTable: [name: 'BIO_DATA_COMPOUND', key: 'BIO_COMPOUND_ID']
-		literatures joinTable: [name: 'BIO_DATA_COMPOUND', key: 'BIO_COMPOUND_ID']
+		experiments joinTable: [name: 'BIOMART.BIO_DATA_COMPOUND', key: 'BIO_COMPOUND_ID']
+		literatures joinTable: [name: 'BIOMART.BIO_DATA_COMPOUND', key: 'BIO_COMPOUND_ID']
 		number column: 'JNJ_NUMBER'
 		sourceCode column: 'SOURCE_CD'
 	}

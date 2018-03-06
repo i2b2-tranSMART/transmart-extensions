@@ -44,8 +44,8 @@ class AnalysisMetadata {
 	String tissue
 
 	static mapping = {
-		table 'LZ_SRC_ANALYSIS_METADATA'
-		id generator: 'sequence', params: [sequence: 'SEQ_ETL_ID'], column: 'ETL_ID'
+		table 'TM_LZ.LZ_SRC_ANALYSIS_METADATA'
+		id generator: 'sequence', params: [sequence: 'TM_LZ.SEQ_ETL_ID'], column: 'ETL_ID'
 		version false
 
 		modelDescription column: 'MODEL_DESC'

@@ -23,8 +23,7 @@ class BioSpeciesOrganism {
 	String species
 
 	static mapping = {
-		table 'BIO_SPECIES_ORGANISM'
-		id column: 'ID'
+		table 'BIOMART.BIO_SPECIES_ORGANISM'
 		version false
 	}
 

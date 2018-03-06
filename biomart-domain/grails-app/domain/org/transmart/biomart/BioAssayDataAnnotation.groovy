@@ -25,7 +25,7 @@ class BioAssayDataAnnotation implements Serializable {
 	BioAssayFeatureGroup probeset
 
 	static mapping = {
-		table 'BIO_ASSAY_DATA_ANNOTATION'
+		table 'BIOMART.BIO_ASSAY_DATA_ANNOTATION'
 		id composite: ['bioMarker', 'probeset']
 		version false
 

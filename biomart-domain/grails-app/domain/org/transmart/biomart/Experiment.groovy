@@ -49,18 +49,18 @@ class Experiment implements IExcelProfile {
 	static belongsTo = [Compound, ContentReference, Disease, Taxonomy]
 
 	static mapping = {
-		table 'BIO_EXPERIMENT'
+		table 'BIOMART.BIO_EXPERIMENT'
 		tablePerHierarchy false
-		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_EXPERIMENT_ID'
+		id generator: 'sequence', params: [sequence: 'BIOMART.SEQ_BIO_DATA_ID'], column: 'BIO_EXPERIMENT_ID'
 		version false
 
 		bioMarkerType column: 'BIOMARKER_TYPE'
-		compounds joinTable: [name: 'BIO_DATA_COMPOUND', key: 'BIO_DATA_ID'], cache: true
-		diseases joinTable: [name: 'BIO_DATA_DISEASE', key: 'BIO_DATA_ID'], cache: true
-		files joinTable: [name: 'BIO_CONTENT_REFERENCE', key: 'BIO_DATA_ID', column: 'BIO_CONTENT_REFERENCE_ID'], cache: true
-		organisms joinTable: [name: 'BIO_DATA_TAXONOMY', key: 'BIO_DATA_ID'], cache: true
+		compounds joinTable: [name: 'BIOMART.BIO_DATA_COMPOUND', key: 'BIO_DATA_ID'], cache: true
+		diseases joinTable: [name: 'BIOMART.BIO_DATA_DISEASE', key: 'BIO_DATA_ID'], cache: true
+		files joinTable: [name: 'BIOMART.BIO_CONTENT_REFERENCE', key: 'BIO_DATA_ID', column: 'BIO_CONTENT_REFERENCE_ID'], cache: true
+		organisms joinTable: [name: 'BIOMART.BIO_DATA_TAXONOMY', key: 'BIO_DATA_ID'], cache: true
 		type column: 'BIO_EXPERIMENT_TYPE'
-		uniqueIds joinTable: [name: 'BIO_DATA_UID', key: 'BIO_DATA_ID']
+		uniqueIds joinTable: [name: 'BIOMART.BIO_DATA_UID', key: 'BIO_DATA_ID']
 	}
 
 	static constraints = {

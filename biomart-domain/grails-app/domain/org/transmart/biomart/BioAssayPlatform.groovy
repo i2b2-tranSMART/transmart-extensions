@@ -18,13 +18,13 @@ class BioAssayPlatform {
 	static hasMany = [analyses: BioAssayAnalysis]
 
 	static mapping = {
-		table 'BIO_ASSAY_PLATFORM'
-		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_ASSAY_PLATFORM_ID'
+		table 'BIOMART.BIO_ASSAY_PLATFORM'
+		id generator: 'sequence', params: [sequence: 'BIOMART.SEQ_BIO_DATA_ID'], column: 'BIO_ASSAY_PLATFORM_ID'
 		version false
 		cache true
 
 		accession column: 'PLATFORM_ACCESSION'
-		analyses joinTable: [name: 'BIO_DATA_PLATFORM', key: 'BIO_ASSAY_PLATFORM_ID']
+		analyses joinTable: [name: 'BIOMART.BIO_DATA_PLATFORM', key: 'BIO_ASSAY_PLATFORM_ID']
 		array column: 'PLATFORM_ARRAY'
 		description column: 'PLATFORM_DESCRIPTION'
 		name column: 'PLATFORM_NAME'

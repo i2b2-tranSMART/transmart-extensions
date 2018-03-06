@@ -27,8 +27,8 @@ class PatientEvent {
 	String site
 
 	static mapping = {
-		table 'BIO_PATIENT_EVENT'
-		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_PATIENT_EVENT_ID'
+		table 'BIOMART.BIO_PATIENT_EVENT'
+		id generator: 'sequence', params: [sequence: 'BIOMART.SEQ_BIO_DATA_ID'], column: 'BIO_PATIENT_EVENT_ID'
 		version false
 	}
 

@@ -31,17 +31,17 @@ class Observation {
 	                  literatures: Literature]
 
 	static mapping = {
-		table 'BIO_OBSERVATION'
-		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_OBSERVATION_ID'
+		table 'BIOMART.BIO_OBSERVATION'
+		id generator: 'sequence', params: [sequence: 'BIOMART.SEQ_BIO_DATA_ID'], column: 'BIO_OBSERVATION_ID'
 		version false
 		cache usage: 'read-only'
 
-		analyses joinTable: [name: 'BIO_DATA_OBSERVATION', key: 'BIO_OBSERVATION_ID']
+		analyses joinTable: [name: 'BIOMART.BIO_DATA_OBSERVATION', key: 'BIO_OBSERVATION_ID']
 		code column: 'OBS_CODE'
 		codeSource column: 'OBS_CODE_SOURCE'
 		description column: 'OBS_DESCR'
-		experiments joinTable: [name: 'BIO_DATA_OBSERVATION', key: 'BIO_OBSERVATION_ID']
-		literatures joinTable: [name: 'BIO_DATA_OBSERVATION', key: 'BIO_OBSERVATION_ID']
+		experiments joinTable: [name: 'BIOMART.BIO_DATA_OBSERVATION', key: 'BIO_OBSERVATION_ID']
+		literatures joinTable: [name: 'BIOMART.BIO_DATA_OBSERVATION', key: 'BIO_OBSERVATION_ID']
 		name column: 'OBS_NAME'
 		type column: 'OBS_TYPE'
 	}

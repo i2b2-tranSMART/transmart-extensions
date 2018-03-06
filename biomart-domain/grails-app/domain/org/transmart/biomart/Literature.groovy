@@ -33,15 +33,15 @@ class Literature {
 	static belongsTo = [BioMarker, Compound, ContentReference, Disease]
 
 	static mapping = {
-		table 'BIO_DATA_LITERATURE'
+		table 'BIOMART.BIO_DATA_LITERATURE'
 		tablePerHierarchy false
-		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_DATA_ID'
+		id generator: 'sequence', params: [sequence: 'BIOMART.SEQ_BIO_DATA_ID'], column: 'BIO_DATA_ID'
 		version false
 
-		compounds joinTable: [name: 'BIO_DATA_COMPOUND', key: 'BIO_DATA_ID']
-		diseases joinTable: [name: 'BIO_DATA_DISEASE', key: 'BIO_DATA_ID']
-		files joinTable: [name: 'BIO_CONTENT_REFERENCE', key: 'BIO_DATA_ID', column: 'BIO_CONTENT_REFERENCE_ID']
-		markers joinTable: [name: 'BIO_DATA_OMIC_MARKER', key: 'BIO_DATA_ID']
+		compounds joinTable: [name: 'BIOMART.BIO_DATA_COMPOUND', key: 'BIO_DATA_ID']
+		diseases joinTable: [name: 'BIOMART.BIO_DATA_DISEASE', key: 'BIO_DATA_ID']
+		files joinTable: [name: 'BIOMART.BIO_CONTENT_REFERENCE', key: 'BIO_DATA_ID', column: 'BIO_CONTENT_REFERENCE_ID']
+		markers joinTable: [name: 'BIOMART.BIO_DATA_OMIC_MARKER', key: 'BIO_DATA_ID']
 		reference column: 'BIO_LIT_REF_DATA_ID'
 	}
 }

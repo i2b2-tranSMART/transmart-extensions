@@ -13,12 +13,12 @@ class ConceptCode {
 	static hasMany = [bioDataUid: BioData]
 
 	static mapping = {
-		table 'BIO_CONCEPT_CODE'
-		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_CONCEPT_CODE_ID'
+		table 'BIOMART.BIO_CONCEPT_CODE'
+		id generator: 'sequence', params: [sequence: 'BIOMART.SEQ_BIO_DATA_ID'], column: 'BIO_CONCEPT_CODE_ID'
 		version false
 		cache true
 
-		bioDataUid joinTable: [name: 'BIO_DATA_UID', key: 'BIO_DATA_ID']
+		bioDataUid joinTable: [name: 'BIOMART.BIO_DATA_UID', key: 'BIO_DATA_ID']
 	}
 
 	static constraints = {

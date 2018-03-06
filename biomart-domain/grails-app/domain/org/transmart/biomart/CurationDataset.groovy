@@ -25,8 +25,8 @@ class CurationDataset {
 	String curationType
 
 	static mapping = {
-		table 'BIO_CURATION_DATASET'
-		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_CURATION_DATASET_ID'
+		table 'BIOMART.BIO_CURATION_DATASET'
+		id generator: 'sequence', params: [sequence: 'BIOMART.SEQ_BIO_DATA_ID'], column: 'BIO_CURATION_DATASET_ID'
 		version false
 
 		bioAnalysisPlatformId column: 'BIO_ASY_ANALYSIS_PLATFORM_ID'

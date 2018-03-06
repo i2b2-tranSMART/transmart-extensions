@@ -7,8 +7,8 @@ class BioAnalysisAttribute {
 	Long termID
 
 	static mapping = {
-		table 'BIO_ANALYSIS_ATTRIBUTE'
-		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_ANALYSIS_ATTRIBUTE_ID'
+		table 'BIOMART.BIO_ANALYSIS_ATTRIBUTE'
+		id generator: 'sequence', params: [sequence: 'BIOMART.SEQ_BIO_DATA_ID'], column: 'BIO_ANALYSIS_ATTRIBUTE_ID'
 		version false
 
 		bioAssayAnalysisID column: 'BIO_ASSAY_ANALYSIS_ID'

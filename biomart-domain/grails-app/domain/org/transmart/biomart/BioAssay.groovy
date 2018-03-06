@@ -32,11 +32,11 @@ class BioAssay {
 	String type
 
 	static mapping = {
-		table 'BIO_ASSAY'
-		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_ASSAY_ID'
+		table 'BIOMART.BIO_ASSAY'
+		id generator: 'sequence', params: [sequence: 'BIOMART.SEQ_BIO_DATA_ID'], column: 'BIO_ASSAY_ID'
 		version false
 
-		assayPlatformId: 'BIO_ASY_PLATFORM_ID' // TODO this is invalid and is ignored
+		assayPlatformId column: 'BIO_ASY_PLATFORM_ID'
 		type column: 'BIO_ASSAY_TYPE'
 	}
 

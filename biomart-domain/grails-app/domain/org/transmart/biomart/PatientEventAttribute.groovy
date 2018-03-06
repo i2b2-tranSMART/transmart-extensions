@@ -27,8 +27,8 @@ class PatientEventAttribute {
 	Long bioPatientEventId
 
 	static mapping = {
-		table 'BIO_PATIENT_EVENT_ATTR'
-		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID']
+		table 'BIOMART.BIO_PATIENT_EVENT_ATTR'
+		id generator: 'sequence', params: [sequence: 'BIOMART.SEQ_BIO_DATA_ID']
 		version false
 
 		bioClinicTrialAttributeId column: 'BIO_CLINIC_TRIAL_ATTR_ID'

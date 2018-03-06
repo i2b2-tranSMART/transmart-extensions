@@ -47,8 +47,8 @@ class LiteratureReferenceData {
 	String variant
 
 	static mapping = {
-		table 'BIO_LIT_REF_DATA'
-		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_LIT_REF_DATA_ID'
+		table 'BIOMART.BIO_LIT_REF_DATA'
+		id generator: 'sequence', params: [sequence: 'BIOMART.SEQ_BIO_DATA_ID'], column: 'BIO_LIT_REF_DATA_ID'
 		version false
 
 		statPValue column: 'STAT_P_VALUE'

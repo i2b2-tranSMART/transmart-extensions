@@ -39,16 +39,16 @@ class BioMarker implements IExcelProfile {
 	                  literatures      : Literature]
 
 	static mapping = {
-		table 'BIO_MARKER'
+		table 'BIOMART.BIO_MARKER'
 		id column: 'BIO_MARKER_ID'
 		version false
 
-		assayAnalysisData joinTable: [name: 'BIO_DATA_OMIC_MARKER', key: 'BIO_MARKER_ID']
-		assayDataStats joinTable: [name: 'BIO_DATA_OMIC_MARKER', key: 'BIO_MARKER_ID']
-		associatedCorrels joinTable: [name: 'BIO_DATA_CORRELATION', key: 'ASSO_BIO_DATA_ID', column: 'BIO_DATA_CORREL_ID']
-		correlations joinTable: [name: 'BIO_DATA_CORRELATION', key: 'BIO_DATA_ID', column: 'BIO_DATA_CORREL_ID']
+		assayAnalysisData joinTable: [name: 'BIOMART.BIO_DATA_OMIC_MARKER', key: 'BIO_MARKER_ID']
+		assayDataStats joinTable: [name: 'BIOMART.BIO_DATA_OMIC_MARKER', key: 'BIO_MARKER_ID']
+		associatedCorrels joinTable: [name: 'BIOMART.BIO_DATA_CORRELATION', key: 'ASSO_BIO_DATA_ID', column: 'BIO_DATA_CORREL_ID']
+		correlations joinTable: [name: 'BIOMART.BIO_DATA_CORRELATION', key: 'BIO_DATA_ID', column: 'BIO_DATA_CORREL_ID']
 		description column: 'BIO_MARKER_DESCRIPTION'
-		literatures joinTable: [name: 'BIO_DATA_OMIC_MARKER', key: 'BIO_MARKER_ID']
+		literatures joinTable: [name: 'BIOMART.BIO_DATA_OMIC_MARKER', key: 'BIO_MARKER_ID']
 		name column: 'BIO_MARKER_NAME'
 	}
 

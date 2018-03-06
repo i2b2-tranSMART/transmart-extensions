@@ -26,8 +26,8 @@ class ClinicalTrialPatientGroup {
 	String patientGroupTypeCode
 
 	static mapping = {
-		table 'BIO_CLINC_TRIAL_PT_GROUP'
-		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_CLINICAL_TRIAL_P_GROUP_ID'
+		table 'BIOMART.BIO_CLINC_TRIAL_PT_GROUP'
+		id generator: 'sequence', params: [sequence: 'BIOMART.SEQ_BIO_DATA_ID'], column: 'BIO_CLINICAL_TRIAL_P_GROUP_ID'
 		version false
 
 		clinicalTrial column: 'BIO_EXPERIMENT_ID'

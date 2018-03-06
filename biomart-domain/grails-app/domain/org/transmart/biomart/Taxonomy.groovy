@@ -26,12 +26,12 @@ class Taxonomy {
 	static hasMany = [experiments: Experiment]
 
 	static mapping = {
-		table 'BIO_TAXONOMY'
-		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_TAXONOMY_ID'
+		table 'BIOMART.BIO_TAXONOMY'
+		id generator: 'sequence', params: [sequence: 'BIOMART.SEQ_BIO_DATA_ID'], column: 'BIO_TAXONOMY_ID'
 		version false
 		cache usage: 'read-only'
 
-		experiments joinTable: [name: 'BIO_DATA_TAXONOMY', key: 'BIO_TAXONOMY_ID']
+		experiments joinTable: [name: 'BIOMART.BIO_DATA_TAXONOMY', key: 'BIO_TAXONOMY_ID']
 		label column: 'TAXON_LABEL'
 		name column: 'TAXON_NAME'
 	}

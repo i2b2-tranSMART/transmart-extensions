@@ -97,10 +97,10 @@ class LiteratureAlterationData extends Literature {
 	static hasMany = [assocMoleculeDetails: LiteratureAssocMoleculeDetailsData]
 
 	static mapping = {
-		table 'BIO_LIT_ALT_DATA'
-		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_LIT_ALT_DATA_ID'
+		table 'BIOMART.BIO_LIT_ALT_DATA'
+		id generator: 'sequence', params: [sequence: 'BIOMART.SEQ_BIO_DATA_ID'], column: 'BIO_LIT_ALT_DATA_ID'
 		version false
 
-		assocMoleculeDetails joinTable: [name: 'BIO_LIT_AMD_DATA', key: 'BIO_LIT_ALT_DATA_ID', column: 'BIO_LIT_AMD_DATA_ID']
+		assocMoleculeDetails joinTable: [name: 'BIOMART.BIO_LIT_AMD_DATA', key: 'BIO_LIT_ALT_DATA_ID', column: 'BIO_LIT_AMD_DATA_ID']
 	}
 }

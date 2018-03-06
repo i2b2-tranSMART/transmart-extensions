@@ -25,8 +25,8 @@ class ContentRepository {
 	String repositoryType
 
 	static mapping = {
-		table 'BIO_CONTENT_REPOSITORY'
-		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_CONTENT_REPO_ID'
+		table 'BIOMART.BIO_CONTENT_REPOSITORY'
+		id generator: 'sequence', params: [sequence: 'BIOMART.SEQ_BIO_DATA_ID'], column: 'BIO_CONTENT_REPO_ID'
 		version false
 		cache usage: 'read-only'
 

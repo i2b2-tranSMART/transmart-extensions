@@ -35,15 +35,15 @@ class BioAssayData {
 	                  markers: BioMarker]
 
 	static mapping = {
-		table 'BIO_ASSAY_DATA'
-		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_ASSAY_DATA_ID'
+		table 'BIOMART.BIO_ASSAY_DATA'
+		id generator: 'sequence', params: [sequence: 'BIOMART.SEQ_BIO_DATA_ID'], column: 'BIO_ASSAY_DATA_ID'
 		version false
 
-		compounds joinTable: [name: 'BIO_DATA_COMPOUND', key: 'BIO_DATA_ID', column: 'BIO_COMPOUND_ID']
-		diseases joinTable: [name: 'BIO_DATA_DISEASE', key: 'BIO_DATA_ID', column: 'BIO_DISEASE_ID']
+		compounds joinTable: [name: 'BIOMART.BIO_DATA_COMPOUND', key: 'BIO_DATA_ID', column: 'BIO_COMPOUND_ID']
+		diseases joinTable: [name: 'BIOMART.BIO_DATA_DISEASE', key: 'BIO_DATA_ID', column: 'BIO_DISEASE_ID']
 		experiment column: 'BIO_EXPERIMENT_ID'
 		log10Value column: 'LOG10_VALUE'
 		log2Value column: 'LOG2_VALUE'
-		markers joinTable: [name: 'BIO_DATA_OMIC_MARKER', key: 'BIO_DATA_ID', column: 'BIO_MARKER_ID']
+		markers joinTable: [name: 'BIOMART.BIO_DATA_OMIC_MARKER', key: 'BIO_DATA_ID', column: 'BIO_MARKER_ID']
 	}
 }

@@ -29,8 +29,8 @@ class Content {
 	static transients = ['absolutePath', 'locationType']
 
 	static mapping = {
-		table 'BIO_CONTENT'
-		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_FILE_CONTENT_ID'
+		table 'BIOMART.BIO_CONTENT'
+		id generator: 'sequence', params: [sequence: 'BIOMART.SEQ_BIO_DATA_ID'], column: 'BIO_FILE_CONTENT_ID'
 		version false
 		cache usage: 'read-only'
 

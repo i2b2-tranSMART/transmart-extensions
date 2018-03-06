@@ -44,7 +44,7 @@ class ClinicalTrial extends Experiment {
 	static transients = ['values']
 
 	static mapping = {
-		table 'BIO_CLINICAL_TRIAL'
+		table 'BIOMART.BIO_CLINICAL_TRIAL'
 		id column: 'BIO_EXPERIMENT_ID'
 		version false
 		cache usage: 'read-only'

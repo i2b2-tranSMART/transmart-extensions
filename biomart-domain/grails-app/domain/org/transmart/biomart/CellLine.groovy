@@ -32,8 +32,8 @@ class CellLine {
 	String species
 
 	static mapping = {
-		table 'BIO_CELL_LINE'
-		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_CELL_LINE_ID'
+		table 'BIOMART.BIO_CELL_LINE'
+		id generator: 'sequence', params: [sequence: 'BIOMART.SEQ_BIO_DATA_ID'], column: 'BIO_CELL_LINE_ID'
 		version false
 		cache true
 	}

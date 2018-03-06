@@ -53,25 +53,25 @@ class BioAssayAnalysis implements IExcelProfile {
 	static belongsTo = [BioAssayPlatform, ContentReference, Disease, Observation]
 
 	static mapping = {
-		table 'BIO_ASSAY_ANALYSIS'
-		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_ASSAY_ANALYSIS_ID'
+		table 'BIOMART.BIO_ASSAY_ANALYSIS'
+		id generator: 'sequence', params: [sequence: 'BIOMART.SEQ_BIO_DATA_ID'], column: 'BIO_ASSAY_ANALYSIS_ID'
 		version false
 
 		analysisMethodCode column: 'ANALYSIS_METHOD_CD'
 		analysisPlatform column: 'BIO_ASY_ANALYSIS_PLTFM_ID'
 		assayDataType column: 'BIO_ASSAY_DATA_TYPE'
 		createDate column: 'ANALYSIS_CREATE_DATE'
-		datasets joinTable: [name: 'BIO_ASY_ANALYSIS_DATASET', key: 'BIO_ASSAY_ANALYSIS_ID']
-		diseases joinTable: [name: 'BIO_DATA_DISEASE', key: 'BIO_DATA_ID'], cache: true
-		ext joinTable: [name: 'BIO_ASSAY_ANALYSIS_EXT', key: 'BIO_ASSAY_ANALYSIS_ID']
-		files joinTable: [name: 'BIO_CONTENT_REFERENCE', key: 'BIO_DATA_ID', column: 'BIO_CONTENT_REFERENCE_ID'], cache: true
+		datasets joinTable: [name: 'BIOMART.BIO_ASY_ANALYSIS_DATASET', key: 'BIO_ASSAY_ANALYSIS_ID']
+		diseases joinTable: [name: 'BIOMART.BIO_DATA_DISEASE', key: 'BIO_DATA_ID'], cache: true
+		ext joinTable: [name: 'BIOMART.BIO_ASSAY_ANALYSIS_EXT', key: 'BIO_ASSAY_ANALYSIS_ID']
+		files joinTable: [name: 'BIOMART.BIO_CONTENT_REFERENCE', key: 'BIO_DATA_ID', column: 'BIO_CONTENT_REFERENCE_ID'], cache: true
 		name column: 'ANALYSIS_NAME'
-		observations joinTable: [name: 'BIO_DATA_OBSERVATION', key: 'BIO_DATA_ID'], cache: true
-		platforms joinTable: [name: 'BIO_DATA_PLATFORM', key: 'BIO_DATA_ID'], cache: true
+		observations joinTable: [name: 'BIOMART.BIO_DATA_OBSERVATION', key: 'BIO_DATA_ID'], cache: true
+		platforms joinTable: [name: 'BIOMART.BIO_DATA_PLATFORM', key: 'BIO_DATA_ID'], cache: true
 		pValueCutoff column: 'PVALUE_CUTOFF'
 		rValueCutoff column: 'RVALUE_CUTOFF'
 		type column: 'ANALYSIS_TYPE'
-		uniqueIds joinTable: [name: 'BIO_DATA_UID', key: 'BIO_DATA_ID']
+		uniqueIds joinTable: [name: 'BIOMART.BIO_DATA_UID', key: 'BIO_DATA_ID']
 	}
 
 	static constraints = {

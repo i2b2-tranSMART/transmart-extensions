@@ -24,8 +24,8 @@ class BioAssaySample {
 	Long bioSampleId
 
 	static mapping = {
-		table 'BIO_ASSAY_SAMPLE'
-		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID']
+		table 'BIOMART.BIO_ASSAY_SAMPLE'
+		id generator: 'sequence', params: [sequence: 'BIOMART.SEQ_BIO_DATA_ID']
 		version false
 	}
 }

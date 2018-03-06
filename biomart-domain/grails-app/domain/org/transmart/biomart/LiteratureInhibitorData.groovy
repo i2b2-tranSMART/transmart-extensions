@@ -56,8 +56,8 @@ class LiteratureInhibitorData extends Literature {
 	String trialType
 
 	static mapping = {
-		table 'BIO_LIT_INH_DATA'
-		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_LIT_INH_DATA_ID'
+		table 'BIOMART.BIO_LIT_INH_DATA'
+		id generator: 'sequence', params: [sequence: 'BIOMART.SEQ_BIO_DATA_ID'], column: 'BIO_LIT_INH_DATA_ID'
 		version false
 	}
 }

@@ -27,12 +27,12 @@ class BioAssayFeatureGroup {
 	static belongsTo = [BioMarker]
 
 	static mapping = {
-		table 'BIO_ASSAY_FEATURE_GROUP'
-		id generator: 'sequence', params: [sequence: 'SEQ_BIO_DATA_ID'], column: 'BIO_ASSAY_FEATURE_GROUP_ID'
+		table 'BIOMART.BIO_ASSAY_FEATURE_GROUP'
+		id generator: 'sequence', params: [sequence: 'BIOMART.SEQ_BIO_DATA_ID'], column: 'BIO_ASSAY_FEATURE_GROUP_ID'
 		version false
 		cache usage: 'read-only'
 
-		markers joinTable: [name: 'BIO_ASSAY_DATA_ANNOTATION', key: 'BIO_ASSAY_FEATURE_GROUP_ID'] // BioAssayDataAnnotation
+		markers joinTable: [name: 'BIOMART.BIO_ASSAY_DATA_ANNOTATION', key: 'BIO_ASSAY_FEATURE_GROUP_ID'] // BioAssayDataAnnotation
 		name column: 'FEATURE_GROUP_NAME'
 		type column: 'FEATURE_GROUP_TYPE'
 	}
